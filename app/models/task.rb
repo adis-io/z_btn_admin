@@ -25,7 +25,7 @@ class Task < ApplicationRecord
   end
 
   def current_task?
-    active_session&.task_id == id
+    active_session.try(:task_id) == id
   end
 
   def active_session
