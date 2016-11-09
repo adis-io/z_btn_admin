@@ -1,13 +1,25 @@
 class TasksController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action { request.format = :json }
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :start, :finish]
+
+  def start
+    return head 404 if @task.nil?
+    @task.touch :started_at
+    render :show
+  end
+
+  def finish
+    return head 404 if @task.nil?
+    @task.touch :finished_at
+    render :show
+  end
 
   # GET /tasks
   # GET /tasks.json
   def index
     user_id = task_params[:user_id]
-    
+
     if user_id.present?
       @tasks = Task.where user_id: user_id
     else
@@ -72,7 +84,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = Task.find_by id: params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
