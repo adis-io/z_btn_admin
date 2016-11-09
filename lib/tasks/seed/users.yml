@@ -1,12 +1,12 @@
 ---
-- sid: 1
+- id: 1
   first_name: 'Вася'
   last_name: 'Пупкин'
 
-- sid: 2
+- id: 2
   first_name: 'Петя'
   last_name: 'Шметя'
 
-- sid: 3
+- id: 3
   first_name: 'Дима'
   last_name: 'Сима'

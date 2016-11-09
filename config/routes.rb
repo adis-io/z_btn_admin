@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
+  resources :tasks
   root 'application#root'
-  post 'tasks', to: 'tasks#create'
 end
