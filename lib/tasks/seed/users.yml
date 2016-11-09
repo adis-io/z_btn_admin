@@ -1,0 +1,12 @@
+---
+- sid: 1
+  first_name: 'Вася'
+  last_name: 'Пупкин'
+
+- sid: 2
+  first_name: 'Петя'
+  last_name: 'Шметя'
+
+- sid: 3
+  first_name: 'Дима'
+  last_name: 'Сима'
