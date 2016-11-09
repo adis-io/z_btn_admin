@@ -6,7 +6,13 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    user_id = task_params[:user_id]
+    
+    if user_id.present?
+      @tasks = Task.where user_id: user_id
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1
