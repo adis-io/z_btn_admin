@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action { request.format = :json }
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
