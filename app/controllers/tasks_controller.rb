@@ -5,13 +5,13 @@ class TasksController < ApplicationController
 
   def start
     return head 404 if @task.nil?
-    @task.touch :started_at
+    @task.start
     render :show
   end
 
   def finish
     return head 404 if @task.nil?
-    @task.touch :finished_at
+    @task.finish
     render :show
   end
 
