@@ -6,7 +6,7 @@
       <%= "#{user.first_name} - #{user.last_name}"%>
       <ul>
         <%user.tasks.each do |task|%>
-          <% if task.time.zero?  and task.active? %>
+          <% if task.time.zero?  or task.active? %>
             <li>
               <div style="color: blue; "></div> <%= task.title%>
             </li>
