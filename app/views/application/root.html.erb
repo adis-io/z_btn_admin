@@ -1,1 +1,24 @@
-zbtn-admin
+<h1>Users</h1>
+
+<ul>
+  <%@users.each do |user|%>
+    <li>
+      <%= "#{user.first_name} - #{user.last_name}"%>
+      <ul>
+        <%user.tasks.each do |task|%>
+          <% if task.time.zero?  and task.active? %>
+            <li>
+              <div style="color: blue; "></div> <%= task.title%>
+            </li>
+          <%elsif task.finished_at.present?%>
+            <li>
+              <div style="color: green; "></div> <%= task.title%>
+            </li>
+          <%end%>            
+        <%end%>
+      </ul>
+    </li>
+  <%end%>
+</ul>
+
+<%#= link_to 'New Task', new_task_path %>
