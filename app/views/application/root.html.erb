@@ -6,13 +6,17 @@
       <%= "#{user.first_name} - #{user.last_name}"%>
       <ul>
         <%user.tasks.each do |task|%>
-          <% if task.time.zero?  or task.active? %>
+          <% if  task.active? %>
             <li>
-              <div style="color: blue; "></div> <%= task.title%>
+              <div style="color: blue; "><%= task.title%></div> 
+            </li>
+          <%elsif task.time.zero? %>
+            <li>
+              <div style="color: blue; "><%= task.title%></div> 
             </li>
           <%elsif task.finished_at.present?%>
             <li>
-              <div style="color: green; "></div> <%= task.title%>
+              <div style="color: green; "> <%= task.title%></div>
             </li>
           <%else%>
             <li>
