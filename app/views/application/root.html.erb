@@ -8,11 +8,11 @@
         <%user.tasks.each do |task|%>
           <% if  task.active? %>
             <li>
-              <div style="color: green; "><%= "#{task.title} - в процессе" %><%= task.time unless task.time.zero?%></div> 
+              <div style="color: green; "><%= "#{task.title} - в процессе" %></div> 
             </li>
           <%else%>
             <li>
-              <div><%= task.title%> <%= task.time unless task.time.zero?%></div> 
+              <div><%= task.title%></div> 
             </li>
           <%end%>            
         <%end%>
