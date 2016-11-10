@@ -39,14 +39,14 @@ class Task < ApplicationRecord
   end
 
   def active_session
-    @active_session ||= user.sessions.active.first
+    user.sessions.active.first
   end
 
   def created_session
-    @created_session ||= user.sessions.create id: nil, task_id: id
+    user.sessions.create id: nil, task_id: id
   end
 
   def session
-    @session ||= active_session || created_session
+    active_session || created_session
   end
 end
