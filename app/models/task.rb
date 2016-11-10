@@ -18,6 +18,10 @@ class Task < ApplicationRecord
     finished_sessions.reduce(0) { |value, s| value + s.duration }
   end
 
+  def active
+    sessions.active.where(task_id: id).present?
+  end
+
   private
 
   def finished_sessions
