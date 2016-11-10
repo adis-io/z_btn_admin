@@ -8,19 +8,11 @@
         <%user.tasks.each do |task|%>
           <% if  task.active? %>
             <li>
-              <div style="color: blue; "><%= task.title%></div> 
-            </li>
-          <%elsif task.time.zero? %>
-            <li>
-              <div style="color: blue; "><%= task.title%></div> 
-            </li>
-          <%elsif task.finished_at.present?%>
-            <li>
-              <div style="color: green; "> <%= task.title%></div>
+              <div style="color: green; "><%= "#{task.title} - в процессе" %><%= task.time unless task.time.zero?%></div> 
             </li>
           <%else%>
             <li>
-              <div><%= task.title%></div> 
+              <div><%= task.title%> <%= task.time unless task.time.zero?%></div> 
             </li>
           <%end%>            
         <%end%>
