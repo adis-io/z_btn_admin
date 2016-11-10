@@ -15,11 +15,17 @@ class Task < ApplicationRecord
   end
 
   def time
-    finished_sessions.reduce(0) { |value, s| value + s.duration }
+    time = finished_sessions.reduce(0) { |value, s| value + s.duration }
+    time = time + active.realtime_duration if active?
+    time
   end
 
   def active
-    sessions.active.where(task_id: id).present?
+    @active ||= sessions.active.where(task_id: id).first
+  end
+
+  def active?
+    active.present?
   end
 
   private

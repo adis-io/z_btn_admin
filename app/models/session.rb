@@ -8,6 +8,11 @@ class Session < ApplicationRecord
     (finished_at - started_at).to_i
   end
 
+  def realtime_duration
+    return 0 if started_at.nil? || finished_at.present?
+    (Time.now - started_at).to_i
+  end
+
   def self.finish_all
     active.update_all finished_at: Time.now
   end
